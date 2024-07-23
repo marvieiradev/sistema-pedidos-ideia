@@ -1,4 +1,4 @@
-import { Usuario } from "@prisma/client"
+import { Usuario } from '@/core/model/Usuario'
 
 export interface LinhaUsuarioProps {
     usuario: Usuario

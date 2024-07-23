@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function useUsuarios() {
     const [usuarios, setUsuarios] = useState<Usuario[]>([])
-    const [usuario, setUsuario] = useState<Partial<Usuario> | null>(usuarios[0])
+    const [usuario, setUsuario] = useState<Partial<Usuario> | null>(null)
 
     useEffect(() => {
         Backend.usuarios.obter().then(setUsuarios)
