@@ -21,4 +21,8 @@ export default class RepositorioUsuario {
         const usuario = await this.db.usuario.findUnique({ where: { id } })
         return usuario as Usuario
     }
+
+    static async exluir(id: string): Promise<void> {
+        await this.db.usuario.delete({ where: { id } })
+    }
 }
