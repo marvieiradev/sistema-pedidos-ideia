@@ -1,4 +1,4 @@
-import { Icon12Hours, Icon360, IconHome, IconPackage } from "@tabler/icons-react";
+import { IconHome, IconPackage } from "@tabler/icons-react";
 import Link from "next/link";
 import MenuItem from "./MenuItem";
 

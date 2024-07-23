@@ -1,4 +1,3 @@
-import usuarios from "@/app/data/constants/usuarios"
 import { Usuario } from "@prisma/client"
 
 export interface LinhaUsuarioProps {

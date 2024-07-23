@@ -1,9 +1,8 @@
-import { PrismaClient, Usuario } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import { Usuario } from '@/core/model/Usuario'
 
 export default class RepositorioUsuario {
     private static db: PrismaClient = new PrismaClient();
-
-
 
     static async salvar(usuario: Usuario): Promise<Usuario> {
         return await this.db.usuario.upsert({

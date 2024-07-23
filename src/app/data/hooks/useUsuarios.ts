@@ -1,6 +1,7 @@
 import Backend from "@/api";
 import { Usuario } from '@/core/model/Usuario';
 import { useEffect, useState } from "react";
+
 export default function useUsuarios() {
     const [usuarios, setUsuarios] = useState<Usuario[]>([])
     const [usuario, setUsuario] = useState<Partial<Usuario> | null>(usuarios[0])

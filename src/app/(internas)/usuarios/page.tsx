@@ -4,7 +4,7 @@ import Titulo from "@/app/components/template/Titulo";
 import FormularioUsuario from "@/app/components/usuario/FormularioUsuario";
 import ListaUsuario from "@/app/components/usuario/ListaUsuario";
 import useUsuarios from "@/app/data/hooks/useUsuarios";
-import { IconPackage, IconPlus, IconUser } from "@tabler/icons-react";
+import { IconPackage, IconPlus } from "@tabler/icons-react";
 
 export default function Page() {
     const { usuario, usuarios, salvar, excluir, alterarUsuario } = useUsuarios()

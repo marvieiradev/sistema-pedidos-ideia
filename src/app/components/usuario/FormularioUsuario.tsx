@@ -1,6 +1,5 @@
-import usuarios from "@/app/data/constants/usuarios";
 import InputTexto from "../shared/InputTexto"
-import { Usuario } from '@/core/model/Usuario';
+import { Usuario } from '@/core/model/Usuario'
 
 export interface FormularioUsuarioProps {
     usuario: Partial<Usuario>
