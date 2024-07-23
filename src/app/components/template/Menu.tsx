@@ -8,8 +8,6 @@ export default function Menu() {
             <nav className="flex flex-col gap-1 py-7">
                 <MenuItem icone={IconHome} texto="Início" url="/" />
                 <MenuItem icone={IconPackage} texto="Pedidos" url="/usuarios" />
-                <MenuItem icone={Icon360} texto="Exemplo" url="/" />
-                <MenuItem icone={Icon12Hours} texto="Exemplo" url="/" />
             </nav>
         </aside>
     );
