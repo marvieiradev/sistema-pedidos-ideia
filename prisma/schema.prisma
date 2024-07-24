@@ -13,13 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuario {
-  id    String @id @default(cuid())
-  email String @unique
-  nome  String
-  senha String
-}
-
 model Pedido {
   id           String  @id @default(cuid())
   cod_pedido   String  @unique
