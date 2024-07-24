@@ -3,6 +3,7 @@
 import FormularioPedido from "@/app/components/pedido/FormularioPedido";
 import ListaPedido from "@/app/components/pedido/ListaPedido";
 import Pagina from "@/app/components/template/Pagina";
+import Tabela from "@/app/components/template/Tabela";
 import Titulo from "@/app/components/template/Titulo";
 import usePedidos from "@/app/data/hooks/usePedidos";
 import { IconPackage, IconPlus } from "@tabler/icons-react";
@@ -29,6 +30,7 @@ export default function Page() {
                         </button>
 
                     </div>
+                    <Tabela />
                     <ListaPedido pedidos={pedidos} onClick={alterarPedido} />
                 </>
             )}

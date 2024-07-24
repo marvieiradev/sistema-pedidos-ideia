@@ -11,7 +11,6 @@ export default function Pagina(props: PaginaProps) {
             <main className="flex-1 p-7">
                 {props.children}
             </main>
-
         </div>
     )
 }
