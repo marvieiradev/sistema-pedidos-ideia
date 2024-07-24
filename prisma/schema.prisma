@@ -19,3 +19,18 @@ model Usuario {
   nome  String
   senha String
 }
+
+model Pedido {
+  id           String  @id @default(cuid())
+  cod_pedido   String  @unique
+  nome_cliente String
+  quantidade   String
+  costureira   String
+  imagem_url   String
+  arte         Boolean @default(false)
+  exportacao   Boolean @default(false)
+  impressao    Boolean @default(false)
+  corte        Boolean @default(false)
+  prensa       Boolean @default(false)
+  costura      Boolean @default(false)
+}
