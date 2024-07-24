@@ -1,4 +1,4 @@
-import Backend from "@/api";
+/*import Backend from "@/api";
 import { Usuario } from '@/core/model/Usuario';
 import { useEffect, useState } from "react";
 
@@ -36,4 +36,4 @@ export default function useUsuarios() {
         cancelar: () => setUsuario(null),
         alterarUsuario: (usuario: Partial<Usuario> | null) => setUsuario(usuario)
     }
-}
+}*/

@@ -1,4 +1,4 @@
-import { Usuario } from "@/core/model/Usuario";
+/*import { Usuario } from "@/core/model/Usuario";
 
 const usuarios: Usuario[] = [
     {
@@ -23,4 +23,4 @@ const usuarios: Usuario[] = [
     }
 ]
 
-export default usuarios;
+export default usuarios;*/

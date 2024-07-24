@@ -1,4 +1,5 @@
 'use client'
+
 import FormularioPedido from "@/app/components/pedido/FormularioPedido";
 import ListaPedido from "@/app/components/pedido/ListaPedido";
 import Pagina from "@/app/components/template/Pagina";

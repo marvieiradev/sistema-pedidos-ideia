@@ -1,4 +1,4 @@
-import InputTexto from "../shared/InputTexto"
+/*import InputTexto from "../shared/InputTexto"
 import { Usuario } from '@/core/model/Usuario'
 
 export interface FormularioUsuarioProps {
@@ -29,4 +29,4 @@ export default function FormularioUsuario(props: FormularioUsuarioProps) {
             </div>
         </div>
     )
-}
+}*/

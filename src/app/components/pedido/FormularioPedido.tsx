@@ -9,7 +9,7 @@ export interface FormularioPedidoProps {
     excluir: () => void
 }
 
-export default function FormularioUsuario(props: FormularioPedidoProps) {
+export default function FormularioPedido(props: FormularioPedidoProps) {
     return (
         <div className="flex flex-col gap-5">
             <InputTexto label="Nome" type="text" value={props.pedido.nome_cliente} onChange={(e) => props.onChange?.({ ...props.pedido, nome_cliente: (e.target as HTMLInputElement).value })} />

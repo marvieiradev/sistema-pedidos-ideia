@@ -1,4 +1,4 @@
-'use server'
+/*'use server'
 
 import { Usuario } from "@/core/model/Usuario";
 import Id from "@/core/util/Id";
@@ -12,4 +12,4 @@ export default async function salvarUsuario(usuario: Partial<Usuario>) {
     }
 
     return RepositorioUsuario.salvar(novoUsuario as Usuario)
-}
+}*/

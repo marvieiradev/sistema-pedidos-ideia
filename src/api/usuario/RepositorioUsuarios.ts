@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+/*import { PrismaClient } from "@prisma/client";
 import { Usuario } from '@/core/model/Usuario'
 
 export default class RepositorioUsuario {
@@ -24,4 +24,4 @@ export default class RepositorioUsuario {
     static async exluir(id: string): Promise<void> {
         await this.db.usuario.delete({ where: { id } })
     }
-}
+}*/

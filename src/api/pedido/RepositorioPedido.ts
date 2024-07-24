@@ -21,7 +21,7 @@ export default class RepositorioPedido {
         return pedido as Pedido
     }
 
-    static async exluir(id: string): Promise<void> {
+    static async excluir(id: string): Promise<void> {
         await this.db.pedido.delete({ where: { id } })
     }
 }

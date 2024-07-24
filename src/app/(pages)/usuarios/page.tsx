@@ -1,4 +1,4 @@
-'use client'
+/*'use client'
 import Pagina from "@/app/components/template/Pagina";
 import Titulo from "@/app/components/template/Titulo";
 import FormularioUsuario from "@/app/components/usuario/FormularioUsuario";
@@ -33,4 +33,4 @@ export default function Page() {
             )}
         </Pagina>
     )
-}
+}*/

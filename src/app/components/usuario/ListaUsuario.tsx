@@ -1,4 +1,4 @@
-import { Usuario } from '@/core/model/Usuario';
+/*import { Usuario } from '@/core/model/Usuario';
 import LinhaUsuario from './LinhaUsuario';
 
 export interface ListaUsuarioProps {
@@ -15,4 +15,4 @@ export default function ListaUsuario(props: ListaUsuarioProps) {
             })}
         </div>
     )
-}
+}*/
