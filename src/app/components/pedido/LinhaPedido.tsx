@@ -1,4 +1,5 @@
 import { Pedido } from "@/core/model/Pedido"
+import CelulaPedido from "./CelulaPedido"
 
 export interface LinhaPedidoProps {
     pedido: Pedido
@@ -7,47 +8,17 @@ export interface LinhaPedidoProps {
 
 export default function LinhaPedido(props: LinhaPedidoProps) {
     return (
-        <div className={`flex flex-row border border-emerald-300 mb-1 cursor-pointer text-white`} onClick={() => props.onClick?.(props.pedido)}>
-
-            <div className="w-[30%] border border-emerald-300">
-                <span className="ml-2">{props.pedido.nome_cliente}</span>
-            </div>
-
-            <div className="w-[10%] border border-emerald-300 text-center">
-                <span>{props.pedido.cod_pedido}</span>
-            </div>
-
-            <div className="w-[10%] border border-emerald-300 text-center">
-                <span>{props.pedido.quantidade}</span>
-            </div>
-
-            <div className={`w-[5%] border border-emerald-300 text-center ${props.pedido.arte ? "bg-green-300" : "bg-red-300"}`}>
-                <span>{props.pedido.arte ? "✔️" : "❌"}</span>
-            </div>
-
-            <div className={`w-[5%] border border-emerald-300 text-center ${props.pedido.exportacao ? "bg-green-300" : "bg-red-300"}`}>
-                <span>{props.pedido.exportacao ? "✔️" : "❌"}</span>
-            </div>
-
-            <div className={`w-[5%] border border-emerald-300 text-center ${props.pedido.impressao ? "bg-green-300" : "bg-red-300"}`}>
-                <span>{props.pedido.impressao ? "✔️" : "❌"}</span>
-            </div>
-
-            <div className={`w-[5%] border border-emerald-300 text-center ${props.pedido.corte ? "bg-green-300" : "bg-red-300"}`}>
-                <span>{props.pedido.corte ? "✔️" : "❌"}</span>
-            </div>
-
-            <div className={`w-[5%] border border-emerald-300 text-center ${props.pedido.prensa ? "bg-green-300" : "bg-red-300"}`}>
-                <span>{props.pedido.prensa ? "✔️" : "❌"}</span>
-            </div>
-
-            <div className={`w-[5%] border border-emerald-300 text-center ${props.pedido.costura ? "bg-green-300" : "bg-red-300"}`}>
-                <span>{props.pedido.costura ? "✔️" : "❌"}</span>
-            </div>
-
-            <div className="w-[20%] border border-emerald-300">
-                <span className="ml-2">{props.pedido.costureira}</span>
-            </div>
+        <div className="flex flex-row border border-bgter cursor-pointer rounded-md" onClick={() => props.onClick?.(props.pedido)}>
+            <CelulaPedido texto={props.pedido.nome_cliente} class="w-[30%] text-start px-2 border-r" />
+            <CelulaPedido texto={props.pedido.cod_pedido} class="w-[10%] border-r" />
+            <CelulaPedido texto={props.pedido.quantidade} class="w-[10%] border-r" />
+            <CelulaPedido texto={props.pedido.arte ? "✔" : ""} class={`${props.pedido.arte ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
+            <CelulaPedido texto={props.pedido.exportacao ? "✔" : ""} class={`${props.pedido.exportacao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
+            <CelulaPedido texto={props.pedido.impressao ? "✔" : ""} class={`${props.pedido.impressao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
+            <CelulaPedido texto={props.pedido.corte ? "✔" : ""} class={`${props.pedido.corte ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
+            <CelulaPedido texto={props.pedido.prensa ? "✔" : ""} class={`${props.pedido.prensa ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
+            <CelulaPedido texto={props.pedido.costura ? "✔" : ""} class={`${props.pedido.costura ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
+            <CelulaPedido texto={props.pedido.costureira} class="w-[20%] text-start px-2" />
         </div>
     )
 }

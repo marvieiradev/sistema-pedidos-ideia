@@ -1,46 +1,18 @@
+import Celula from "./Celula"
+
 export default function Tabela() {
     return (
-        <div className="flex flex-row border border-white mb-1 cursor-pointer text-yellow-500 bg-black">
-
-            <div className="w-[30%] border border-white">
-                <span className="ml-2">Cliente</span>
-            </div>
-
-            <div className="w-[10%] border border-white text-center">
-                <span>Cód. Pedido</span>
-            </div>
-
-            <div className="w-[10%] border border-white text-center">
-                <span>Quantidade</span>
-            </div>
-
-            <div className="w-[5%] border border-white text-center">
-                <span>ART</span>
-            </div>
-
-            <div className="w-[5%] border border-white text-center">
-                <span>EXP</span>
-            </div>
-
-            <div className="w-[5%] border border-white text-center">
-                <span>IMP</span>
-            </div>
-
-            <div className="w-[5%] border border-white text-center">
-                <span>COR</span>
-            </div>
-
-            <div className="w-[5%] border border-white text-center">
-                <span>PRE</span>
-            </div>
-
-            <div className="w-[5%] border border-white text-center">
-                <span>COS</span>
-            </div>
-
-            <div className="w-[20%] border border-white">
-                <span className="ml-2">Costureira</span>
-            </div>
+        <div className="flex flex-row bg-bgter text-txpry border border-txter mb-[1px] py-[2px] rounded-md font-semibold">
+            <Celula texto="Cliente" class="w-[30%] border-r" />
+            <Celula texto="Cód. Pedido" class="w-[10%] border-r" />
+            <Celula texto="Quant." class="w-[10%] border-r" />
+            <Celula texto="ART" class="w-[5%] border-r" />
+            <Celula texto="EXP" class="w-[5%] border-r" />
+            <Celula texto="IMP" class="w-[5%] border-r" />
+            <Celula texto="COR" class="w-[5%] border-r" />
+            <Celula texto="PRE" class="w-[5%] border-r" />
+            <Celula texto="COS" class="w-[5%] border-r" />
+            <Celula texto="Costureira" class="w-[20%]" />
         </div>
     )
 }

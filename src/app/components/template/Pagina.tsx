@@ -6,9 +6,8 @@ export interface PaginaProps {
 
 export default function Pagina(props: PaginaProps) {
     return (
-        <div className="flex">
-            <Menu />
-            <main className="flex-1 p-7">
+        <div className="flex items-center justify-center">
+            <main className="flex flex-col items-center justify-center">
                 {props.children}
             </main>
         </div>
