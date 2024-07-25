@@ -7,12 +7,35 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontSize: {
+      xs: ['12px', '16px'],
+      sm: ['14px', '18px'],
+      base: ['16px', '24px'],
+      lg: ['20px', '28px'],
+      xl: ['24px', '32px'],
+      '2xl': ['32px', '40px'],
+      '3xl': ['48px', '56px'],
+      '4xl': ['56px', '64px'],
+      '5xl': ['64px', '70px'],
+    },
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+      colors: {
+        bgpry: '#F5F5F5',
+        bgsec: '#EBEBEB',
+        bgter: '#D9D9D9',
+        txpry: '#171717',
+        txsec: '#525252',
+        txter: '#707070',
+        verdepry: '#8FFFC9',
+        verdesec: '#00A161',
+        vermelhopry: '#FFA8A8',
+        vermelhosec: '#FF3333',
+        azulpry: '#85D4FF',
+        azulsec: '#0083C9',
+        cinzapry: '#CCCCCC',
+        cinzasec: '#808080',
+        white: '#FFFFFF',
+      }
     },
   },
   plugins: [],
