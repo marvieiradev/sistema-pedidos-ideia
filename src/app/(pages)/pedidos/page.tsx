@@ -9,14 +9,19 @@ import Tabela from "@/app/components/template/Tabela";
 import Titulo from "@/app/components/template/Titulo";
 import usePedidos from "@/app/data/hooks/usePedidos";
 import { IconPackage, IconPlus } from "@tabler/icons-react";
+import { redirect } from "next/navigation";
 
 export default function Page() {
     const { pedido, pedidos, salvar, excluir, alterarPedido } = usePedidos()
+    var user = sessionStorage.getItem("setor");
+    if (!user) {
+        redirect('/')
+    }
     return (
         <Pagina>
-            <Header texto="Administração" />
-            <div className="w-[70%]">
-                <Titulo icone={IconPackage} texto="Controle de Pedidos" />
+            <Header texto={user} />
+            <div className="w-full md:max-w-[1200px] px-2">
+                <Titulo texto="Acompanhamento Diário" />
                 {pedido ? (
                     <FormularioPedido
                         pedido={pedido}
