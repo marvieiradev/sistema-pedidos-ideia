@@ -7,5 +7,6 @@ export default class Backend {
         salvar: salvarPedido,
         obter: obterTodos,
         excluir: excluirPedido,
+        salvarItem: salvarPedido,
     }
 }

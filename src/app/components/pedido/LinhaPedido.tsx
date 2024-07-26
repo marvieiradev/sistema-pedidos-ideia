@@ -18,7 +18,8 @@ export default function LinhaPedido(props: LinhaPedidoProps) {
             <CelulaPedido texto={props.pedido.corte ? "✔" : ""} class={`${props.pedido.corte ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
             <CelulaPedido texto={props.pedido.prensa ? "✔" : ""} class={`${props.pedido.prensa ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
             <CelulaPedido texto={props.pedido.costura ? "✔" : ""} class={`${props.pedido.costura ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
-            <CelulaPedido texto={props.pedido.costureira} class="w-[20%] text-start px-2" />
+            <CelulaPedido texto={props.pedido.expedicao ? "✔" : ""} class={`${props.pedido.expedicao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
+            <CelulaPedido texto={props.pedido.costureira} class="w-[20%] text-start px-2 bg-amarelopry" />
         </div>
     )
 }

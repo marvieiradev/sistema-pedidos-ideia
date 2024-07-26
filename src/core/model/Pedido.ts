@@ -11,4 +11,5 @@ export interface Pedido {
     corte: boolean
     prensa: boolean
     costura: boolean
+    expedicao: boolean
 }
