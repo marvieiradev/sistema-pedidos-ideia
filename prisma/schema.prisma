@@ -15,7 +15,7 @@ datasource db {
 
 model Pedido {
   id           String  @id @default(cuid())
-  cod_pedido   String  @unique
+  cod_pedido   String
   nome_cliente String
   quantidade   String
   costureira   String
@@ -26,4 +26,5 @@ model Pedido {
   corte        Boolean @default(false)
   prensa       Boolean @default(false)
   costura      Boolean @default(false)
+  expedicao    Boolean @default(false)
 }
