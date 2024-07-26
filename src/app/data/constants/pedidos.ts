@@ -14,6 +14,7 @@ const pedidos: Pedido[] = [
         corte: false,
         prensa: false,
         costura: false,
+        expedicao: false
     },
 
     {
@@ -29,7 +30,7 @@ const pedidos: Pedido[] = [
         corte: false,
         prensa: true,
         costura: false,
-
+        expedicao: false
     },
 
     {
@@ -45,7 +46,7 @@ const pedidos: Pedido[] = [
         corte: false,
         prensa: true,
         costura: false,
-
+        expedicao: false
     },
 
     {
@@ -61,6 +62,7 @@ const pedidos: Pedido[] = [
         corte: false,
         prensa: true,
         costura: false,
+        expedicao: false
     },
 ]
 
