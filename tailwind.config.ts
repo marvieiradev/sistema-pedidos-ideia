@@ -34,6 +34,7 @@ const config: Config = {
         azulsec: '#0083C9',
         cinzapry: '#CCCCCC',
         cinzasec: '#808080',
+        amarelopry: '#FFF5D7',
         white: '#FFFFFF',
       }
     },
