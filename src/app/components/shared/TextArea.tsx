@@ -4,7 +4,6 @@ import { InputHTMLAttributes } from "react";
 
 export interface TextAreaProps extends InputHTMLAttributes<HTMLElement> {
     label: string
-    class: string
 }
 
 export default function TextArea(props: TextAreaProps) {

@@ -4,7 +4,6 @@ import { InputHTMLAttributes } from "react";
 
 export interface TextAreaDisabledProps extends InputHTMLAttributes<HTMLElement> {
     label: string
-    class: string
 }
 
 export default function TextAreaDisabled(props: TextAreaDisabledProps) {

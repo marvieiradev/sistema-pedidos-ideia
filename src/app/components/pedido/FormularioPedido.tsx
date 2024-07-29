@@ -25,7 +25,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
         setUser("" + user)
     }, []);
 
-    if (props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade && props.pedido.costureira && props.pedido.obs && props.pedido.id && user === 'administração') {
+    if (props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade && props.pedido.costureira && props.pedido.id && user === 'administração') {
         editar = true;
     }
 
@@ -61,8 +61,8 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                 <div className="flex flex-col md:gap-3 md:flex-row">
                     <div className="md:w-[50%]">
                         {user == "administração" ? (
-                            <TextArea class={user !== "administração" ? "va" : ""} label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value })} />
-                        ) : (<TextAreaDisabled class={user !== "administração" ? "va" : ""} label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value })} />)}
+                            <TextArea label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value })} />
+                        ) : (<TextAreaDisabled label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value })} />)}
                     </div>
                     <div className="md:w-[50%] text-sm md:text-md">
                     </div>
@@ -79,7 +79,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {user === "exportação" && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, exportacao: true })}>
-                                    <Button texto="Confirmar Corte" class="text-verdesec border-verdesec bg-verdepry" />
+                                    <Button texto="Confirmar Corte" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -87,7 +87,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {user === "impressão" && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, impressao: true })}>
-                                    <Button texto="Confirmar Impressão" class="text-verdesec border-verdesec bg-verdepry" />
+                                    <Button texto="Confirmar Impressão" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -95,7 +95,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {user === "corte" && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, corte: true })}>
-                                    <Button texto="Confirmar Corte" class="text-verdesec border-verdesec bg-verdepry" />
+                                    <Button texto="Confirmar Corte" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -103,7 +103,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {user === "prensa" && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, prensa: true })}>
-                                    <Button texto="Confirmar Prensa" class="text-verdesec border-verdesec bg-verdepry" />
+                                    <Button texto="Confirmar Prensa" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -111,7 +111,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {user === "costura" && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, costura: true })}>
-                                    <Button texto="Confirmar Costura" class="text-verdesec border-verdesec bg-verdepry" />
+                                    <Button texto="Confirmar Costura" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -119,7 +119,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {user === "expedicao" && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, expedicao: true })}>
-                                    <Button texto="Confirmar Expedição" class="text-verdesec border-verdesec bg-verdepry" />
+                                    <Button texto="Confirmar Expedição" class="text-azulsecsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -130,20 +130,22 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                     </div>
                     <div className="text-xs md:text-md">
                         {editar && (
-                            <div className="flex justify-end mb-4" onClick={props.excluir} >
-                                <Button texto="Finalizar Pedido" class="text-vermelhosec border-vermelhosec bg-vermelhopry" />
+                            <div onClick={toggle}>
+                                <div className="flex justify-end mb-4" onClick={() => { }} >
+                                    <Button texto="Entregar Pedido" class="text-vermelhosec border-vermelhosec bg-vermelhopry" />
+                                </div>
                             </div>
                         )}
                     </div>
                 </div>
             </div >
+            {user === "administração" && (<Modal text="Deseja fazer entregar do pedido?" action={props.excluir} isOpen={isOpen} toggle={toggle}></Modal>)}
             {user === "exportação" && (<Modal text="Deseja confirmar a exportação?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
             {user === "impressão" && (<Modal text="Deseja confirmar a impressão?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
             {user === "corte" && (<Modal text="Deseja confirmar o corte?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
             {user === "prensa" && (<Modal text="Deseja confirmar a prensa?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
             {user === "costura" && (<Modal text="Deseja confirmar costura?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
             {user === "expedição" && (<Modal text="Deseja confirmar a expedição?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
-
         </>
     )
 }
