@@ -25,6 +25,7 @@ export default function Home() {
                   funcionarios.map((funcionario: Funcionario) => {
                     if (funcionario.nome == nome && funcionario.senha == senha) {
                       sessionStorage.setItem("setor", funcionario.setor)
+                      error = false;
                     } else {
                       error = true;
                     }

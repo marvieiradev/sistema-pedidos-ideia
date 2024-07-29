@@ -5,6 +5,7 @@ export interface Pedido {
     quantidade: string
     costureira: string
     obs: string
+    prioridade: string
     exportacao: boolean
     impressao: boolean
     corte: boolean

@@ -41,20 +41,20 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
 
                         {user == "administração" ? (
                             <InputTexto label="Nome" type="text" value={props.pedido.nome_cliente} onChange={(e) => props.onChange?.({ ...props.pedido, nome_cliente: (e.target as HTMLInputElement).value })} />
-                        ) : (<InputDisabled label="Nome" type="text" value={props.pedido.nome_cliente} onChange={(e) => props.onChange?.({ ...props.pedido, nome_cliente: (e.target as HTMLInputElement).value })} />)}
+                        ) : (<InputDisabled label="Nome" type="text" value={props.pedido.nome_cliente} />)}
 
                         {user == "administração" ? (
                             <InputTexto label="Cód. Pedido" type="number" value={props.pedido.cod_pedido} onChange={(e) => props.onChange?.({ ...props.pedido, cod_pedido: (e.target as HTMLInputElement).value })} />
-                        ) : (<InputDisabled label="Cód. Pedido" type="number" value={props.pedido.cod_pedido} onChange={(e) => props.onChange?.({ ...props.pedido, cod_pedido: (e.target as HTMLInputElement).value })} />)}
+                        ) : (<InputDisabled label="Cód. Pedido" type="number" value={props.pedido.cod_pedido} />)}
                     </div>
                     <div className="md:w-[50%]">
                         {user == "administração" ? (
                             <InputTexto label="Quantidade" type="number" value={props.pedido.quantidade} onChange={(e) => props.onChange?.({ ...props.pedido, quantidade: (e.target as HTMLInputElement).value })} />
-                        ) : (<InputDisabled label="Quantidade" type="number" value={props.pedido.quantidade} onChange={(e) => props.onChange?.({ ...props.pedido, quantidade: (e.target as HTMLInputElement).value })} />)}
+                        ) : (<InputDisabled label="Quantidade" type="number" value={props.pedido.quantidade} />)}
 
                         {user == "administração" || user == "prensa" ? (
                             <InputTexto label="Costureira" type="text" value={props.pedido.costureira} onChange={(e) => props.onChange?.({ ...props.pedido, costureira: (e.target as HTMLInputElement).value })} />
-                        ) : (<InputDisabled label="Costureira" type="text" value={props.pedido.costureira} onChange={(e) => props.onChange?.({ ...props.pedido, costureira: (e.target as HTMLInputElement).value })} />)}
+                        ) : (<InputDisabled label="Costureira" type="text" value={props.pedido.costureira} />)}
                     </div>
                 </div>
 
@@ -62,7 +62,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                     <div className="md:w-[50%]">
                         {user == "administração" ? (
                             <TextArea label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value })} />
-                        ) : (<TextAreaDisabled label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value })} />)}
+                        ) : (<TextAreaDisabled label="Observação" type="textarea" value={props.pedido.obs} />)}
                     </div>
                     <div className="md:w-[50%] text-sm md:text-md">
                     </div>
