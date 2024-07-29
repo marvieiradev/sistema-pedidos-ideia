@@ -38,7 +38,9 @@ export default function Page() {
                 ) : (
                     <>
                         <div className="flex justify-end mb-4" onClick={() => alterarPedido({})}>
-                            <Button texto="Novo Pedido" class="text-azulsec border-azulsec bg-azulpry" />
+                            {user == "administração" && (
+                                <Button texto="Novo Pedido" class="text-azulsec border-azulsec bg-azulpry" />
+                            )}
                         </div>
                         <Tabela />
                         <ListaPedido pedidos={pedidos} onClick={alterarPedido} />

@@ -3,6 +3,10 @@ import InputTexto from "../shared/InputTexto"
 import Button from "../template/Button"
 import Modal from "../template/Modal"
 import useModal from "../template/UseModal"
+import { useEffect, useState } from "react"
+import TextArea from "../shared/TextArea"
+import InputDisabled from "../shared/InputDisabled"
+import TextAreaDisabled from "../shared/TextaAreaDisabled"
 
 export interface FormularioPedidoProps {
     pedido: Partial<Pedido>
@@ -15,9 +19,13 @@ export interface FormularioPedidoProps {
 
 export default function FormularioPedido(props: FormularioPedidoProps) {
     let editar = false;
-    var user = sessionStorage.getItem("setor");
+    const [user, setUser] = useState("");
+    useEffect(() => {
+        const user = sessionStorage.getItem("setor")
+        setUser("" + user)
+    }, []);
 
-    if (props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade && props.pedido.costureira && props.pedido.imagem_url && props.pedido.id && user === 'admin') {
+    if (props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade && props.pedido.costureira && props.pedido.obs && props.pedido.id && user === 'administração') {
         editar = true;
     }
 
@@ -26,35 +34,45 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
     return (
         <>
             <div className="flex flex-col gap-5 border border-txsec p-4 rounded-lg bg-bgsec">
-                <span className="text-center text-txpry text-xl mb-4">{!editar ? "Novo Pedido" : "Editar Pedido"}</span>
-                <div className="flex gap-3">
-                    <div className="w-[50%]">
-                        <InputTexto label="Nome" type="text" value={props.pedido.nome_cliente} onChange={(e) => props.onChange?.({ ...props.pedido, nome_cliente: (e.target as HTMLInputElement).value })} />
-                        <InputTexto label="Cód. Pedido" type="number" value={props.pedido.cod_pedido} onChange={(e) => props.onChange?.({ ...props.pedido, cod_pedido: (e.target as HTMLInputElement).value })} />
-                        <InputTexto label="Quantidade" type="number" value={props.pedido.quantidade} onChange={(e) => props.onChange?.({ ...props.pedido, quantidade: (e.target as HTMLInputElement).value })} />
-                        <InputTexto label="Costureira" type="text" value={props.pedido.costureira} onChange={(e) => props.onChange?.({ ...props.pedido, costureira: (e.target as HTMLInputElement).value })} />
-                        <InputTexto label="Imagem" type="text" value={props.pedido.imagem_url} onChange={(e) => props.onChange?.({ ...props.pedido, imagem_url: (e.target as HTMLInputElement).value })} />
+                {user == 'administração' && (<span className="text-center text-txpry text-lg md:text-xl mb:2 md:mb-4">{!editar ? "Novo Pedido" : "Editar Pedido"}</span>)}
+                {user != 'administração' && (<span className="text-center text-txpry text-lg md:text-xl mb:2 md:mb-4">Detalhes do Pedido</span>)}
+                <div className="flex flex-col md:gap-3 md:flex-row">
+                    <div className="md:w-[50%] text-sm md:text-md">
+
+                        {user == "administração" ? (
+                            <InputTexto label="Nome" type="text" value={props.pedido.nome_cliente} onChange={(e) => props.onChange?.({ ...props.pedido, nome_cliente: (e.target as HTMLInputElement).value })} />
+                        ) : (<InputDisabled label="Nome" type="text" value={props.pedido.nome_cliente} onChange={(e) => props.onChange?.({ ...props.pedido, nome_cliente: (e.target as HTMLInputElement).value })} />)}
+
+                        {user == "administração" ? (
+                            <InputTexto label="Cód. Pedido" type="number" value={props.pedido.cod_pedido} onChange={(e) => props.onChange?.({ ...props.pedido, cod_pedido: (e.target as HTMLInputElement).value })} />
+                        ) : (<InputDisabled label="Cód. Pedido" type="number" value={props.pedido.cod_pedido} onChange={(e) => props.onChange?.({ ...props.pedido, cod_pedido: (e.target as HTMLInputElement).value })} />)}
                     </div>
-                    <div className="w-[50%]">
-                        <div className="bg-azulpry w-full h-full rounded-lg">
-                        </div>
+                    <div className="md:w-[50%]">
+                        {user == "administração" ? (
+                            <InputTexto label="Quantidade" type="number" value={props.pedido.quantidade} onChange={(e) => props.onChange?.({ ...props.pedido, quantidade: (e.target as HTMLInputElement).value })} />
+                        ) : (<InputDisabled label="Quantidade" type="number" value={props.pedido.quantidade} onChange={(e) => props.onChange?.({ ...props.pedido, quantidade: (e.target as HTMLInputElement).value })} />)}
+
+                        {user == "administração" || user == "costura" ? (
+                            <InputTexto label="Costureira" type="text" value={props.pedido.costureira} onChange={(e) => props.onChange?.({ ...props.pedido, costureira: (e.target as HTMLInputElement).value })} />
+                        ) : (<InputDisabled label="Costureira" type="text" value={props.pedido.costureira} onChange={(e) => props.onChange?.({ ...props.pedido, costureira: (e.target as HTMLInputElement).value })} />)}
+                    </div>
+                </div>
+
+                <div className="flex flex-col md:gap-3 md:flex-row">
+                    <div className="md:w-[50%]">
+                        {user == "administração" ? (
+                            <TextArea class={user !== "administração" ? "va" : ""} label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value })} />
+                        ) : (<TextAreaDisabled class={user !== "administração" ? "va" : ""} label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value })} />)}
+                    </div>
+                    <div className="md:w-[50%] text-sm md:text-md">
                     </div>
                 </div>
 
                 <div className="flex justify-between">
-                    <div className="flex gap-5">
-
-                        {user === "admin" && (
+                    <div className="flex gap-2 md:gap-5">
+                        {(user === "administração" || user === "costura") && (
                             <div className="flex justify-end mb-4" onClick={props.salvar}>
                                 <Button texto="Salvar" class="text-verdesec border-verdesec bg-verdepry" />
-                            </div>
-                        )}
-
-                        {user === "arte" && (
-                            <div onClick={toggle}>
-                                <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, arte: true })}>
-                                    <Button texto="Confirmar Corte" class="text-verdesec border-verdesec bg-verdepry" />
-                                </div>
                             </div>
                         )}
 
@@ -110,7 +128,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             <Button texto="Cancelar" class="text-cinzasec border-cinzasec bg-cinzapry" />
                         </div>
                     </div>
-                    <div>
+                    <div className="text-xs md:text-md">
                         {editar && (
                             <div className="flex justify-end mb-4" onClick={props.excluir} >
                                 <Button texto="Finalizar Pedido" class="text-vermelhosec border-vermelhosec bg-vermelhopry" />
@@ -119,7 +137,6 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                     </div>
                 </div>
             </div >
-            {user === "arte" && (<Modal text="Deseja confirmar a arte?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
             {user === "exportação" && (<Modal text="Deseja confirmar a exportação?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
             {user === "impressão" && (<Modal text="Deseja confirmar a impressão?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
             {user === "corte" && (<Modal text="Deseja confirmar o corte?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}

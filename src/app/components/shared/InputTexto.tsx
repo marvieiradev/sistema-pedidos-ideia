@@ -9,8 +9,8 @@ export interface InputTextoProps extends InputHTMLAttributes<HTMLElement> {
 export default function InputTexto(props: InputTextoProps) {
     return (
         <div className="flex flex-col gap-1 mb-2">
-            <label className="text-txpry">{props.label}</label>
-            <input {...props} className="bg-pry border border-txter text-txsec p-1 rounded-md outline-none" />
+            <label className="text-txpry text-sm md:text-md">{props.label}</label>
+            <input {...props} className="bg-pry border border-txter text-txsec p-1 rounded-md outline-none text-sm md:text-md" />
         </div>
     )
 }

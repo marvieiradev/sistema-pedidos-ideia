@@ -13,13 +13,13 @@ export default function Home() {
   return (
     <>
       <Pagina>
-        <div className="w-screen h-screen flex justify-center items-center">
+        <div className="w-screen h-screen flex justify-center items-center p-2">
           <div className="bg-bgsec border border-txter items-center flex flex-col p-8 rounded-lg w-full md:max-w-[400px]">
             <img src="./logo-preto.svg" alt="" width={150} />
             <span className="text-center text-txpry text-xl mt-4">Login</span>
             <div className="flex flex-col gap-4 m-4 w-full">
-              <InputTexto label="Usuario" type="text" onChange={(e) => nome = (e.target as HTMLInputElement).value} />
-              <InputTexto label="Senha" type="password" onChange={(e) => senha = (e.target as HTMLInputElement).value} />
+              <InputTexto label="Usuario" type="text" onChange={(e) => nome = (e.target as HTMLInputElement).value.toLocaleLowerCase()} />
+              <InputTexto label="Senha" type="password" onChange={(e) => senha = (e.target as HTMLInputElement).value.toLocaleLowerCase()} />
               <div className="flex justify-center">
                 <Link href="/pedidos" onClick={() => {
                   funcionarios.map((funcionario: Funcionario) => {
