@@ -19,8 +19,7 @@ model Pedido {
   nome_cliente String
   quantidade   String
   costureira   String
-  imagem_url   String
-  arte         Boolean @default(false)
+  obs          String  @default("")
   exportacao   Boolean @default(false)
   impressao    Boolean @default(false)
   corte        Boolean @default(false)
