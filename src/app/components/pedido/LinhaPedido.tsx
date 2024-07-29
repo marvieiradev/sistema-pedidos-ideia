@@ -53,12 +53,12 @@ export default function LinhaPedido(props: LinhaPedidoProps) {
             {(user == "prensa") && (
                 <>
                     <CelulaPedido texto={props.pedido.nome_cliente} class="w-[45%] text-start px-2 border-r" />
-                    <CelulaPedido texto={props.pedido.cod_pedido} class="w-[20%] border-r" />
-                    <CelulaPedido texto={props.pedido.quantidade} class="w-[20%] border-r" />
+                    <CelulaPedido texto={props.pedido.cod_pedido} class="w-[15%] border-r" />
+                    <CelulaPedido texto={props.pedido.quantidade} class="w-[15%] border-r" />
                     <CelulaPedido texto={props.pedido.impressao ? "✔" : ""} class={`${props.pedido.impressao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.corte ? "✔" : ""} class={`${props.pedido.corte ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
-                    <CelulaPedido texto={props.pedido.prensa ? "✔" : ""} class={`${props.pedido.prensa ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r rounded-r-md`} />
-
+                    <CelulaPedido texto={props.pedido.prensa ? "✔" : ""} class={`${props.pedido.prensa ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
+                    <CelulaPedido texto={props.pedido.costureira} class="w-[20%] text-start px-2 bg-amarelopry rounded-r-md" />
                 </>
             )}
             {(user == "costura") && (
@@ -66,7 +66,6 @@ export default function LinhaPedido(props: LinhaPedidoProps) {
                     <CelulaPedido texto={props.pedido.nome_cliente} class="w-[45%] text-start px-2 border-r" />
                     <CelulaPedido texto={props.pedido.cod_pedido} class="w-[15%] border-r" />
                     <CelulaPedido texto={props.pedido.quantidade} class="w-[15%] border-r" />
-                    <CelulaPedido texto={props.pedido.corte ? "✔" : ""} class={`${props.pedido.corte ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.prensa ? "✔" : ""} class={`${props.pedido.prensa ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.costura ? "✔" : ""} class={`${props.pedido.costura ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.costureira} class="w-[20%] text-start px-2 bg-amarelopry rounded-r-md" />

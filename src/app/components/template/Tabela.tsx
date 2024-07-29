@@ -41,17 +41,17 @@ export default function Tabela() {
                     <Celula texto="EXP" class="w-[8%] border-r" />
                     <Celula texto="IMP" class="w-[8%] border-r" />
                     <Celula texto="COR" class="w-[8%] border-r" />
-
                 </>
             )}
             {(user == "prensa") && (
                 <>
                     <Celula texto="Cliente" class="w-[45%] border-r" />
-                    <Celula texto="Cód. Pedido" class="w-[20%] border-r" />
-                    <Celula texto="Quant." class="w-[20%] border-r" />
+                    <Celula texto="Cód. Pedido" class="w-[15%] border-r" />
+                    <Celula texto="Quant." class="w-[15%] border-r" />
                     <Celula texto="IMP" class="w-[8%] border-r" />
                     <Celula texto="COR" class="w-[8%] border-r" />
                     <Celula texto="PRE" class="w-[8%] border-r " />
+                    <Celula texto="Costureira" class="w-[20%] " />
                 </>
             )}
             {(user == "costura") && (
@@ -59,7 +59,6 @@ export default function Tabela() {
                     <Celula texto="Cliente" class="w-[45%] border-r" />
                     <Celula texto="Cód. Pedido" class="w-[15%] border-r" />
                     <Celula texto="Quant." class="w-[15%] border-r" />
-                    <Celula texto="COR" class="w-[8%] border-r" />
                     <Celula texto="PRE" class="w-[8%] border-r" />
                     <Celula texto="COS" class="w-[8%] border-r" />
                     <Celula texto="Costureira" class="w-[20%] " />
