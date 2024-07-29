@@ -37,7 +37,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                 {user == 'administração' && (<span className="text-center text-txpry text-lg md:text-xl mb:2 md:mb-4">{!editar ? "Novo Pedido" : "Editar Pedido"}</span>)}
                 {user != 'administração' && (<span className="text-center text-txpry text-lg md:text-xl mb:2 md:mb-4">Detalhes do Pedido</span>)}
                 <div className="flex flex-col md:gap-3 md:flex-row">
-                    <div className="md:w-[50%] text-sm md:text-md">
+                    <div className="md:w-[50%]">
 
                         {user == "administração" ? (
                             <InputTexto label="Nome" type="text" value={props.pedido.nome_cliente} onChange={(e) => props.onChange?.({ ...props.pedido, nome_cliente: (e.target as HTMLInputElement).value })} />
@@ -128,7 +128,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             <Button texto="Cancelar" class="text-cinzasec border-cinzasec bg-cinzapry" />
                         </div>
                     </div>
-                    <div className="text-xs md:text-md">
+                    <div>
                         {editar && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => { }} >
