@@ -52,7 +52,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             <InputTexto label="Quantidade" type="number" value={props.pedido.quantidade} onChange={(e) => props.onChange?.({ ...props.pedido, quantidade: (e.target as HTMLInputElement).value })} />
                         ) : (<InputDisabled label="Quantidade" type="number" value={props.pedido.quantidade} onChange={(e) => props.onChange?.({ ...props.pedido, quantidade: (e.target as HTMLInputElement).value })} />)}
 
-                        {user == "administração" || user == "costura" ? (
+                        {user == "administração" || user == "prensa" ? (
                             <InputTexto label="Costureira" type="text" value={props.pedido.costureira} onChange={(e) => props.onChange?.({ ...props.pedido, costureira: (e.target as HTMLInputElement).value })} />
                         ) : (<InputDisabled label="Costureira" type="text" value={props.pedido.costureira} onChange={(e) => props.onChange?.({ ...props.pedido, costureira: (e.target as HTMLInputElement).value })} />)}
                     </div>
@@ -70,7 +70,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
 
                 <div className="flex justify-between">
                     <div className="flex gap-2 md:gap-5">
-                        {(user === "administração" || user === "costura") && (
+                        {(user === "administração" || user === "prensa") && (
                             <div className="flex justify-end mb-4" onClick={props.salvar}>
                                 <Button texto="Salvar" class="text-verdesec border-verdesec bg-verdepry" />
                             </div>
