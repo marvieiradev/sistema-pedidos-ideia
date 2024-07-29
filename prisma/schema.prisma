@@ -18,8 +18,9 @@ model Pedido {
   cod_pedido   String
   nome_cliente String
   quantidade   String
-  costureira   String
+  costureira   String  @default("")
   obs          String  @default("")
+  prioridade   String  @default("BAIXA")
   exportacao   Boolean @default(false)
   impressao    Boolean @default(false)
   corte        Boolean @default(false)
