@@ -20,7 +20,7 @@ model Pedido {
   quantidade   String
   costureira   String  @default("")
   obs          String  @default("")
-  prioridade   String  @default("BAIXA")
+  prioridade   String  @default("3")
   exportacao   Boolean @default(false)
   impressao    Boolean @default(false)
   corte        Boolean @default(false)
