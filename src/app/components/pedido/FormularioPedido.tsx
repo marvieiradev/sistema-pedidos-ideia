@@ -36,8 +36,8 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
     return (
         <>
             <div className="flex flex-col gap-5 border border-txsec p-4 rounded-lg bg-bgsec">
-                {user == 'administração' && (<span className="text-center text-txpry text-lg md:text-xl mb:2 md:mb-4">{!editar ? "Novo Pedido" : "Editar Pedido"}</span>)}
-                {user != 'administração' && (<span className="text-center text-txpry text-lg md:text-xl mb:2 md:mb-4">Detalhes do Pedido</span>)}
+                {user == 'administração' && (<span className="text-center text-txpry text-lg md:text-xl mb:2 md:mb-4 uppercase">{!editar ? "Novo Pedido" : "Editar Pedido"}</span>)}
+                {user != 'administração' && (<span className="text-center text-txpry text-lg md:text-xl mb:2 md:mb-4 uppercase">Detalhes do Pedido</span>)}
                 <div className="flex flex-col md:gap-3 md:flex-row">
                     <div className="md:w-[50%]">
 
@@ -173,10 +173,9 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                     )}
                 </div>
 
-
                 <div className="flex justify-between">
                     <div className="flex gap-2 md:gap-5">
-                        {(user === "administração" || user === "prensa") && (
+                        {((user === "administração" || user === "prensa") && props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade) && (
                             <div className="flex justify-end mb-4" onClick={props.salvar}>
                                 <Button texto="Salvar" class="text-verdesec border-verdesec bg-verdepry" />
                             </div>
@@ -185,12 +184,12 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {user === "exportação" && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, exportacao: true })}>
-                                    <Button texto="Confirmar Corte" class="text-azulsec border-azulsec bg-azulpry" />
+                                    <Button texto="Confirmar Exportação" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
 
-                        {user === "impressão" && (
+                        {(user === "impressão" && props.pedido.exportacao) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, impressao: true })}>
                                     <Button texto="Confirmar Impressão" class="text-azulsec border-azulsec bg-azulpry" />
@@ -198,7 +197,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {user === "corte" && (
+                        {(user === "corte" && props.pedido.impressao) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, corte: true })}>
                                     <Button texto="Confirmar Corte" class="text-azulsec border-azulsec bg-azulpry" />
@@ -206,7 +205,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {user === "prensa" && (
+                        {(user === "prensa" && props.pedido.corte) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, prensa: true })}>
                                     <Button texto="Confirmar Prensa" class="text-azulsec border-azulsec bg-azulpry" />
@@ -214,7 +213,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {user === "costura" && (
+                        {(user === "costura" && props.pedido.prensa) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, costura: true })}>
                                     <Button texto="Confirmar Costura" class="text-azulsec border-azulsec bg-azulpry" />
@@ -222,7 +221,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {user === "expedicao" && (
+                        {(user === "expedicao" && props.pedido.costura) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, expedicao: true })}>
                                     <Button texto="Confirmar Expedição" class="text-azulsecsec border-azulsec bg-azulpry" />
@@ -235,7 +234,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         </div>
                     </div>
                     <div>
-                        {editar && (
+                        {(editar && props.pedido.exportacao && props.pedido.impressao && props.pedido.corte && props.pedido.prensa && props.pedido.costura && props.pedido.expedicao) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => { }} >
                                     <Button texto="Entregar Pedido" class="text-vermelhosec border-vermelhosec bg-vermelhopry" />
