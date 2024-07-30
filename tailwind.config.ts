@@ -26,6 +26,7 @@ const config: Config = {
         txpry: '#171717',
         txsec: '#525252',
         txter: '#707070',
+        txquar: '#909090',
         verdepry: '#8FFFC9',
         verdesec: '#00A161',
         vermelhopry: '#FFA8A8',
@@ -36,6 +37,8 @@ const config: Config = {
         cinzasec: '#808080',
         amarelopry: '#FFF5D7',
         white: '#FFFFFF',
+        prioralta: '#FFD6D6',
+        priormedia: '#FFF7DE'
       }
     },
   },
