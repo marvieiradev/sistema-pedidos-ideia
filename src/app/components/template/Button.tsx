@@ -5,7 +5,7 @@ export interface ButtonProps {
 
 export default function Button(props: ButtonProps) {
     return (
-        <button className={`flex items-center px-4 py-2 rounded-md border-[2px] text-xs md:text-sm lg:text-base font-semibold ${props.class}`}>
+        <button className={`flex items-center px-4 py-2 rounded-md border-[2px] text-xs md:text-sm lg:text-base font-semibold uppercase ${props.class}`}>
             {props.texto}
         </button >
     )
