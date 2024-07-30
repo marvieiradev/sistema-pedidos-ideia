@@ -8,7 +8,7 @@ export default function Tabela() {
         setUser("" + user)
     }, []);
     return (
-        <div className="flex flex-row bg-bgter text-txpry border border-txter mb-[1px] py-[2px] rounded-md font-semibold text-sm">
+        <div className="flex flex-row bg-bgter text-txpry border border-txsec mb-[1px] py-[2px] rounded-md font-semibold text-sm">
             {(user == "administração") && (
                 <>
                     <Celula texto="Cliente" class="w-[30%] border-r" />

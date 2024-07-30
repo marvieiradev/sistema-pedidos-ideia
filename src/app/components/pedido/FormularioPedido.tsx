@@ -8,6 +8,7 @@ import TextArea from "../shared/TextArea"
 import InputDisabled from "../shared/InputDisabled"
 import TextAreaDisabled from "../shared/TextaAreaDisabled"
 import SmallButton from "../template/SmallButton"
+import React from "react"
 
 export interface FormularioPedidoProps {
     pedido: Partial<Pedido>
@@ -20,12 +21,17 @@ export interface FormularioPedidoProps {
 
 export default function FormularioPedido(props: FormularioPedidoProps) {
     let editar = false;
-    let conf = ""
+    const [menuIsOpen, setMenuIsOpen] = React.useState(false);
     const [user, setUser] = useState("");
     useEffect(() => {
         const user = sessionStorage.getItem("setor")
         setUser("" + user)
     }, []);
+
+    const handlePrioridadeClick = () => {
+        setMenuIsOpen(false);
+    }
+    const handleMenuClick = () => setMenuIsOpen(!menuIsOpen);
 
     if (props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade && props.pedido.costureira && props.pedido.id && user === 'administração') {
         editar = true;
@@ -68,23 +74,35 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                     </div>
                     {user == "administração" && (
                         <div className="md:w-[50%] flex flex-wrap justify-center border-2 border-vermelhopry rounded-md">
-                            <div className="flex mt-2 p-2 px-4 items-center justify-center gap-2 border border-cinzasec rounded-md">
-                                <span className="font-semibold text-center text-sm">PRIORIDADE: {props.pedido.prioridade}</span>
-                                {props.pedido.prioridade == "BAIXA" ? (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, prioridade: "ALTA" })}>
-                                        <SmallButton texto="Alterar Prioridade" class="text-azulsec border-azulsec bg-azulpry" />
-                                    </div>
-                                ) : (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, prioridade: "BAIXA" })}>
-                                        <SmallButton texto="Alterar Prioridade" class="text-cinzasec border-cinzasec bg-cinzapry" />
-                                    </div>
-                                )}
+                            <div className="flex mt-2 p-2 px-8 items-center justify-center gap-2 border border-cinzasec rounded-md">
+                                <span className="font-semibold text-center text-sm">PRIORIDADE:</span>
 
+                                <div className="relative w-[100px] bg-bgpry border border-cinzasec" onClick={handleMenuClick}>
+                                    <span className="cursor-pointer font-semibold text-center text-sm pr-1">{props.pedido.prioridade == "1" ? "ALTA" : props.pedido.prioridade == "2" ? "MÉDIA" : props.pedido.prioridade == "3" ? "BAIXA" : "..."}</span>
+
+                                    {menuIsOpen && (
+                                        <div className="z-50 absolute w-[100px] bg-bgpry left-[-1px]" onMouseLeave={() => setMenuIsOpen(false)}>
+                                            <div onClick={() => setMenuIsOpen(false)}>
+                                                <div className="flex flex-row p-1 items-center gap-2 border border-cinzasec" onClick={() => props.salvarItem?.({ ...props.pedido, prioridade: "3" })}>
+                                                    <span className="cursor-pointer font-semibold text-center text-sm"> BAIXA</span>
+                                                </div>
+
+                                                <div className="flex flex-row p-1 items-center gap-2 border border-cinzasec bg-priormedia" onClick={() => props.salvarItem?.({ ...props.pedido, prioridade: "2" })}>
+                                                    <span className="cursor-pointer font-semibold text-center text-sm"> MÉDIA</span>
+                                                </div>
+
+                                                <div className="flex flex-row p-1 items-center gap-2 border border-cinzasec bg-prioralta" onClick={() => props.salvarItem?.({ ...props.pedido, prioridade: "1" })}>
+                                                    <span className="cursor-pointer font-semibold text-center text-sm"> ALTA</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
                             <div className="flex flex-wrap justify-center p-2 gap-3 md:gap-1">
 
-                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md w-[84px]">
                                     <span className="font-semibold text-center text-[12px]">EXPORTAÇÃO</span>
                                     <span className="font-semibold text-center text-sm">{props.pedido.exportacao ? "SIM" : "NÃO"}</span>
                                     {props.pedido.exportacao ? (
@@ -98,7 +116,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                                     )}
                                 </div>
 
-                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md w-[84px]">
                                     <span className="font-semibold text-center text-[12px]">IMPRESSÃO</span>
                                     <span className="font-semibold text-center text-sm">{props.pedido.impressao ? "SIM" : "NÃO"}</span>
                                     {props.pedido.impressao ? (
@@ -112,7 +130,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                                     )}
                                 </div>
 
-                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md w-[84px]">
                                     <span className="font-semibold text-center text-[12px]">CORTE</span>
                                     <span className="font-semibold text-center text-sm">{props.pedido.corte ? "SIM" : "NÃO"}</span>
                                     {props.pedido.corte ? (
@@ -126,7 +144,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                                     )}
                                 </div>
 
-                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md w-[84px]">
                                     <span className="font-semibold text-center text-[12px]">PRENSA</span>
                                     <span className="font-semibold text-center text-sm">{props.pedido.prensa ? "SIM" : "NÃO"}</span>
                                     {props.pedido.prensa ? (
@@ -140,7 +158,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                                     )}
                                 </div>
 
-                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md w-[84px]">
                                     <span className="font-semibold text-center text-[12px]">COSTURA</span>
                                     <span className="font-semibold text-center text-sm">{props.pedido.costura ? "SIM" : "NÃO"}</span>
                                     {props.pedido.costura ? (
@@ -154,7 +172,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                                     )}
                                 </div>
 
-                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md w-[84px]">
                                     <span className="font-semibold text-center text-[12px]">EXPEDIÇÃO</span>
                                     <span className="font-semibold text-center text-sm">{props.pedido.expedicao ? "SIM" : "NÃO"}</span>
                                     {props.pedido.expedicao ? (
