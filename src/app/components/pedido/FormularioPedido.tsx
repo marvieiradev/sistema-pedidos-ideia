@@ -66,7 +66,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             <TextArea label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value.toUpperCase() })} />
                         ) : (<TextAreaDisabled label="Observação" type="textarea" value={props.pedido.obs} />)}
                     </div>
-                    <div className="md:w-[50%] flex flex-wrap justify-center border border-vermelhosec">
+                    <div className="md:w-[50%] flex flex-wrap justify-center border-2 border-vermelhopry rounded-md">
 
                         <div className="flex mt-2 p-2 px-4 items-center justify-center gap-2 border border-cinzasec rounded-md">
                             <span className="font-semibold text-center text-sm">PRIORIDADE: {props.pedido.prioridade}</span>
@@ -82,7 +82,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
 
                         </div>
 
-                        <div className="flex flex-wrap justify-center p-2 gap-1">
+                        <div className="flex flex-wrap justify-center p-2 gap-3 md:gap-1">
                             <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
                                 <span className="font-semibold text-center text-[12px]">EXPORTAÇÃO</span>
                                 <span className="font-semibold text-center text-sm">{props.pedido.exportacao ? "SIM" : "NÃO"}</span>
