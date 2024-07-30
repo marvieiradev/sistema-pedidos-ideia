@@ -18,9 +18,9 @@ export default function LinhaPedido(props: LinhaPedidoProps) {
         <div className="flex flex-row border border-bgter cursor-pointer rounded-md" onClick={() => props.onClick?.(props.pedido)}>
             {(user == "administração") && (
                 <>
-                    <CelulaPedido texto={props.pedido.nome_cliente} class="w-[30%] text-start px-2 border-r" />
-                    <CelulaPedido texto={props.pedido.cod_pedido} class="w-[10%] border-r" />
-                    <CelulaPedido texto={props.pedido.quantidade} class="w-[10%] border-r" />
+                    <CelulaPedido texto={props.pedido.nome_cliente} class={`w-[30%] text-start px-2 border-r rounded-l-md ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.cod_pedido} class={`w-[10%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.quantidade} class={`w-[10%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
                     <CelulaPedido texto={props.pedido.exportacao ? "✔" : ""} class={`${props.pedido.exportacao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
                     <CelulaPedido texto={props.pedido.impressao ? "✔" : ""} class={`${props.pedido.impressao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
                     <CelulaPedido texto={props.pedido.corte ? "✔" : ""} class={`${props.pedido.corte ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[5%] border-r`} />
@@ -32,9 +32,9 @@ export default function LinhaPedido(props: LinhaPedidoProps) {
             )}
             {(user == "loja") && (
                 <>
-                    <CelulaPedido texto={props.pedido.nome_cliente} class="w-[45%] text-start px-2 border-r" />
-                    <CelulaPedido texto={props.pedido.cod_pedido} class="w-[20%] border-r" />
-                    <CelulaPedido texto={props.pedido.quantidade} class="w-[20%] border-r" />
+                    <CelulaPedido texto={props.pedido.nome_cliente} class={`w-[45%] text-start px-2 border-r rounded-l-md ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.cod_pedido} class={`w-[20%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.quantidade} class={`w-[20%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
                     <CelulaPedido texto={props.pedido.exportacao ? "✔" : ""} class={`${props.pedido.exportacao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.impressao ? "✔" : ""} class={`${props.pedido.impressao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.corte ? "✔" : ""} class={`${props.pedido.corte ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r rounded-r-md`} />
@@ -42,9 +42,9 @@ export default function LinhaPedido(props: LinhaPedidoProps) {
             )}
             {(user == "corte") && (
                 <>
-                    <CelulaPedido texto={props.pedido.nome_cliente} class="w-[45%] text-start px-2 border-r" />
-                    <CelulaPedido texto={props.pedido.cod_pedido} class="w-[20%] border-r" />
-                    <CelulaPedido texto={props.pedido.quantidade} class="w-[20%] border-r" />
+                    <CelulaPedido texto={props.pedido.nome_cliente} class={`w-[45%] text-start px-2 border-r rounded-l-md ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.cod_pedido} class={`w-[20%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.quantidade} class={`w-[20%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
                     <CelulaPedido texto={props.pedido.exportacao ? "✔" : ""} class={`${props.pedido.exportacao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.impressao ? "✔" : ""} class={`${props.pedido.impressao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.corte ? "✔" : ""} class={`${props.pedido.corte ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r rounded-r-md`} />
@@ -52,9 +52,9 @@ export default function LinhaPedido(props: LinhaPedidoProps) {
             )}
             {(user == "prensa") && (
                 <>
-                    <CelulaPedido texto={props.pedido.nome_cliente} class="w-[45%] text-start px-2 border-r" />
-                    <CelulaPedido texto={props.pedido.cod_pedido} class="w-[15%] border-r" />
-                    <CelulaPedido texto={props.pedido.quantidade} class="w-[15%] border-r" />
+                    <CelulaPedido texto={props.pedido.nome_cliente} class={`w-[45%] text-start px-2 border-r rounded-l-md ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.cod_pedido} class={`w-[15%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.quantidade} class={`w-[15%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
                     <CelulaPedido texto={props.pedido.impressao ? "✔" : ""} class={`${props.pedido.impressao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.corte ? "✔" : ""} class={`${props.pedido.corte ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.prensa ? "✔" : ""} class={`${props.pedido.prensa ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
@@ -63,9 +63,9 @@ export default function LinhaPedido(props: LinhaPedidoProps) {
             )}
             {(user == "costura") && (
                 <>
-                    <CelulaPedido texto={props.pedido.nome_cliente} class="w-[45%] text-start px-2 border-r" />
-                    <CelulaPedido texto={props.pedido.cod_pedido} class="w-[15%] border-r" />
-                    <CelulaPedido texto={props.pedido.quantidade} class="w-[15%] border-r" />
+                    <CelulaPedido texto={props.pedido.nome_cliente} class={`w-[45%] text-start px-2 border-r rounded-l-md ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.cod_pedido} class={`w-[15%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.quantidade} class={`w-[15%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
                     <CelulaPedido texto={props.pedido.prensa ? "✔" : ""} class={`${props.pedido.prensa ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.costura ? "✔" : ""} class={`${props.pedido.costura ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.costureira} class="w-[20%] text-start px-2 bg-amarelopry rounded-r-md" />
@@ -73,9 +73,9 @@ export default function LinhaPedido(props: LinhaPedidoProps) {
             )}
             {(user == "expedição") && (
                 <>
-                    <CelulaPedido texto={props.pedido.nome_cliente} class="w-[45%] text-start px-2 border-r" />
-                    <CelulaPedido texto={props.pedido.cod_pedido} class="w-[15%] border-r" />
-                    <CelulaPedido texto={props.pedido.quantidade} class="w-[15%] border-r" />
+                    <CelulaPedido texto={props.pedido.nome_cliente} class={`w-[45%] text-start px-2 border-r rounded-l-md ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.cod_pedido} class={`w-[15%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
+                    <CelulaPedido texto={props.pedido.quantidade} class={`w-[15%] border-r ${props.pedido.prioridade == "ALTA" ? "bg-amarelopry" : ""}`} />
                     <CelulaPedido texto={props.pedido.costura ? "✔" : ""} class={`${props.pedido.costura ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.expedicao ? "✔" : ""} class={`${props.pedido.expedicao ? "bg-verdepry text-verdesec" : "bg-vermelhopry"} w-[8%] border-r`} />
                     <CelulaPedido texto={props.pedido.costureira} class="w-[20%] text-start px-2 bg-amarelopry rounded-r-md" />

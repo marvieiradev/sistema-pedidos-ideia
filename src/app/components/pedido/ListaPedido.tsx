@@ -1,5 +1,6 @@
 import { Pedido } from "@/core/model/Pedido"
 import LinhaPedido from "./LinhaPedido"
+import { useEffect } from "react";
 
 export interface ListaPedidoProps {
     pedidos: Pedido[]
@@ -7,6 +8,12 @@ export interface ListaPedidoProps {
 }
 
 export default function ListaPedido(props: ListaPedidoProps) {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            window.location.reload();
+        }, 60000);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <div className="flex flex-col">

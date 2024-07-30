@@ -19,7 +19,7 @@ export default function Page() {
         if (!user) {
             redirect('/')
         }
-    }, []);
+    }, [pedido]);
 
     return (
         <Pagina>
@@ -43,6 +43,7 @@ export default function Page() {
                             )}
                         </div>
                         <Tabela />
+                        { }
                         <ListaPedido pedidos={pedidos} onClick={alterarPedido} />
                     </>
                 )}

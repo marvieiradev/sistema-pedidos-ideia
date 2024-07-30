@@ -13,7 +13,11 @@ export default class RepositorioPedido {
     }
 
     static async obterTodos(): Promise<Pedido[]> {
-        return await this.db.pedido.findMany()
+        return await this.db.pedido.findMany({
+            orderBy: {
+                prioridade: 'asc',
+            },
+        })
     }
 
     static async obterPorId(id: string): Promise<Pedido> {

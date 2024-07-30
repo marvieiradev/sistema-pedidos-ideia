@@ -15,9 +15,11 @@ export default function Header(props: HeaderProps) {
                 </div>
                 <div className="flex gap-2">
                     <span className="capitalize">{props.texto}</span>
-                    <Link href="/" onClick={() => sessionStorage.setItem("setor", "")}>
-                        <IconLogout />
-                    </Link>
+                    <div className="border border-txter rounded-md">
+                        <Link href="/" onClick={() => sessionStorage.setItem("setor", "")}>
+                            <IconLogout />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

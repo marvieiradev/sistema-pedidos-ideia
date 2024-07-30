@@ -66,110 +66,113 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             <TextArea label="Observação" type="textarea" value={props.pedido.obs} onChange={(e) => props.onChange?.({ ...props.pedido, obs: (e.target as HTMLInputElement).value.toUpperCase() })} />
                         ) : (<TextAreaDisabled label="Observação" type="textarea" value={props.pedido.obs} />)}
                     </div>
-                    <div className="md:w-[50%] flex flex-wrap justify-center border-2 border-vermelhopry rounded-md">
+                    {user == "administração" && (
+                        <div className="md:w-[50%] flex flex-wrap justify-center border-2 border-vermelhopry rounded-md">
+                            <div className="flex mt-2 p-2 px-4 items-center justify-center gap-2 border border-cinzasec rounded-md">
+                                <span className="font-semibold text-center text-sm">PRIORIDADE: {props.pedido.prioridade}</span>
+                                {props.pedido.prioridade == "BAIXA" ? (
+                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, prioridade: "ALTA" })}>
+                                        <SmallButton texto="Alterar Prioridade" class="text-azulsec border-azulsec bg-azulpry" />
+                                    </div>
+                                ) : (
+                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, prioridade: "BAIXA" })}>
+                                        <SmallButton texto="Alterar Prioridade" class="text-cinzasec border-cinzasec bg-cinzapry" />
+                                    </div>
+                                )}
 
-                        <div className="flex mt-2 p-2 px-4 items-center justify-center gap-2 border border-cinzasec rounded-md">
-                            <span className="font-semibold text-center text-sm">PRIORIDADE: {props.pedido.prioridade}</span>
-                            {props.pedido.prioridade == "BAIXA" ? (
-                                <div onClick={() => props.salvarItem?.({ ...props.pedido, prioridade: "ALTA" })}>
-                                    <SmallButton texto="Alterar Prioridade" class="text-azulsec border-azulsec bg-azulpry" />
+                            </div>
+
+                            <div className="flex flex-wrap justify-center p-2 gap-3 md:gap-1">
+
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                    <span className="font-semibold text-center text-[12px]">EXPORTAÇÃO</span>
+                                    <span className="font-semibold text-center text-sm">{props.pedido.exportacao ? "SIM" : "NÃO"}</span>
+                                    {props.pedido.exportacao ? (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, exportacao: false })}>
+                                            <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
+                                        </div>
+                                    ) : (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, exportacao: true })}>
+                                            <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
+                                        </div>
+                                    )}
                                 </div>
-                            ) : (
-                                <div onClick={() => props.salvarItem?.({ ...props.pedido, prioridade: "BAIXA" })}>
-                                    <SmallButton texto="Alterar Prioridade" class="text-cinzasec border-cinzasec bg-cinzapry" />
+
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                    <span className="font-semibold text-center text-[12px]">IMPRESSÃO</span>
+                                    <span className="font-semibold text-center text-sm">{props.pedido.impressao ? "SIM" : "NÃO"}</span>
+                                    {props.pedido.impressao ? (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, impressao: false })}>
+                                            <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
+                                        </div>
+                                    ) : (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, impressao: true })}>
+                                            <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
+                                        </div>
+                                    )}
                                 </div>
-                            )}
 
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                    <span className="font-semibold text-center text-[12px]">CORTE</span>
+                                    <span className="font-semibold text-center text-sm">{props.pedido.corte ? "SIM" : "NÃO"}</span>
+                                    {props.pedido.corte ? (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, corte: false })}>
+                                            <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
+                                        </div>
+                                    ) : (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, corte: true })}>
+                                            <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                    <span className="font-semibold text-center text-[12px]">PRENSA</span>
+                                    <span className="font-semibold text-center text-sm">{props.pedido.prensa ? "SIM" : "NÃO"}</span>
+                                    {props.pedido.prensa ? (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, prensa: false })}>
+                                            <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
+                                        </div>
+                                    ) : (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, prensa: true })}>
+                                            <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                    <span className="font-semibold text-center text-[12px]">COSTURA</span>
+                                    <span className="font-semibold text-center text-sm">{props.pedido.costura ? "SIM" : "NÃO"}</span>
+                                    {props.pedido.costura ? (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, costura: false })}>
+                                            <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
+                                        </div>
+                                    ) : (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, costura: true })}>
+                                            <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
+                                    <span className="font-semibold text-center text-[12px]">EXPEDIÇÃO</span>
+                                    <span className="font-semibold text-center text-sm">{props.pedido.expedicao ? "SIM" : "NÃO"}</span>
+                                    {props.pedido.expedicao ? (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, expedicao: false })}>
+                                            <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
+                                        </div>
+                                    ) : (
+                                        <div onClick={() => props.salvarItem?.({ ...props.pedido, expedicao: true })}>
+                                            <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
+                                        </div>
+                                    )}
+                                </div>
+
+                            </div>
                         </div>
-
-                        <div className="flex flex-wrap justify-center p-2 gap-3 md:gap-1">
-                            <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
-                                <span className="font-semibold text-center text-[12px]">EXPORTAÇÃO</span>
-                                <span className="font-semibold text-center text-sm">{props.pedido.exportacao ? "SIM" : "NÃO"}</span>
-                                {props.pedido.exportacao ? (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, exportacao: false })}>
-                                        <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
-                                    </div>
-                                ) : (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, exportacao: true })}>
-                                        <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
-                                <span className="font-semibold text-center text-[12px]">IMPRESSÃO</span>
-                                <span className="font-semibold text-center text-sm">{props.pedido.impressao ? "SIM" : "NÃO"}</span>
-                                {props.pedido.impressao ? (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, impressao: false })}>
-                                        <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
-                                    </div>
-                                ) : (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, impressao: true })}>
-                                        <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
-                                <span className="font-semibold text-center text-[12px]">CORTE</span>
-                                <span className="font-semibold text-center text-sm">{props.pedido.corte ? "SIM" : "NÃO"}</span>
-                                {props.pedido.corte ? (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, corte: false })}>
-                                        <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
-                                    </div>
-                                ) : (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, corte: true })}>
-                                        <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
-                                <span className="font-semibold text-center text-[12px]">PRENSA</span>
-                                <span className="font-semibold text-center text-sm">{props.pedido.prensa ? "SIM" : "NÃO"}</span>
-                                {props.pedido.prensa ? (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, prensa: false })}>
-                                        <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
-                                    </div>
-                                ) : (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, prensa: true })}>
-                                        <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
-                                <span className="font-semibold text-center text-[12px]">COSTURA</span>
-                                <span className="font-semibold text-center text-sm">{props.pedido.costura ? "SIM" : "NÃO"}</span>
-                                {props.pedido.costura ? (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, costura: false })}>
-                                        <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
-                                    </div>
-                                ) : (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, costura: true })}>
-                                        <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="flex flex-col p-1 items-center justify-center border border-cinzasec rounded-md">
-                                <span className="font-semibold text-center text-[12px]">EXPEDIÇÃO</span>
-                                <span className="font-semibold text-center text-sm">{props.pedido.expedicao ? "SIM" : "NÃO"}</span>
-                                {props.pedido.expedicao ? (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, expedicao: false })}>
-                                        <SmallButton texto="Remover" class="text-cinzasec border-cinzasec bg-cinzapry" />
-                                    </div>
-                                ) : (
-                                    <div onClick={() => props.salvarItem?.({ ...props.pedido, expedicao: true })}>
-                                        <SmallButton texto="Adicionar" class="text-azulsec border-azulsec bg-azulpry" />
-                                    </div>
-                                )}
-                            </div>
-
-                        </div>
-                    </div>
+                    )}
                 </div>
+
 
                 <div className="flex justify-between">
                     <div className="flex gap-2 md:gap-5">
