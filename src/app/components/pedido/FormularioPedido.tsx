@@ -200,7 +200,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {user === "exportação" && (
+                        {(user === "loja" && !props.pedido.exportacao) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, exportacao: true })}>
                                     <Button texto="Concluir Exportação" class="text-azulsec border-azulsec bg-azulpry" />
@@ -208,7 +208,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {(user === "impressão" && props.pedido.exportacao) && (
+                        {(user === "loja" && props.pedido.exportacao && !props.pedido.impressao) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, impressao: true })}>
                                     <Button texto="Concluir Impressão" class="text-azulsec border-azulsec bg-azulpry" />
@@ -216,7 +216,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {(user === "corte" && props.pedido.impressao) && (
+                        {(user === "corte" && !props.pedido.corte) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, corte: true })}>
                                     <Button texto="Concluir Corte" class="text-azulsec border-azulsec bg-azulpry" />
@@ -224,7 +224,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {(user === "prensa" && props.pedido.corte) && (
+                        {(user === "prensa" && props.pedido.corte && !props.pedido.prensa) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, prensa: true })}>
                                     <Button texto="Concluir Prensa" class="text-azulsec border-azulsec bg-azulpry" />
@@ -232,7 +232,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {(user === "costura" && props.pedido.prensa) && (
+                        {(user === "costura" && props.pedido.prensa && !props.pedido.costura) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, costura: true })}>
                                     <Button texto="Concluir Costura" class="text-azulsec border-azulsec bg-azulpry" />
@@ -240,7 +240,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {(user === "expedicao" && props.pedido.costura) && (
+                        {(user === "expedicao" && props.pedido.costura && !props.pedido.expedicao) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, expedicao: true })}>
                                     <Button texto="Concluir Expedição" class="text-azulsecsec border-azulsec bg-azulpry" />
