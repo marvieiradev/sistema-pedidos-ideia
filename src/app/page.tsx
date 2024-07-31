@@ -7,8 +7,7 @@ import React, { useEffect } from "react";
 import funcionarios from "./data/constants/funcionarios";
 import { Funcionario } from "@/core/model/Funcionario";
 
-
-let error = false;
+var error = false;
 export default function Home() {
   let nome = ""; let senha = "";
 
@@ -38,7 +37,7 @@ export default function Home() {
               </div>
 
               <div className="flex items-center justify-center text-vermelhosec text-center h-[25px] font-semibold">
-                {error && (
+                {error === true && (
                   <span>Usuário ou senha incorretos, por favor tente novamente</span>
                 )}
               </div>
