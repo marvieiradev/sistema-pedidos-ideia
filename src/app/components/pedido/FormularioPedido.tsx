@@ -9,6 +9,8 @@ import InputDisabled from "../shared/InputDisabled"
 import TextAreaDisabled from "../shared/TextaAreaDisabled"
 import SmallButton from "../template/SmallButton"
 import React from "react"
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 export interface FormularioPedidoProps {
     pedido: Partial<Pedido>
@@ -28,17 +30,15 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
         setUser("" + user)
     }, []);
 
-    const handlePrioridadeClick = () => {
-        setMenuIsOpen(false);
-    }
+    const notifVerde = (texto: string) => toast.success(texto, { position: "top-center", autoClose: 3000 });
+    const notifAzul = (texto: string) => toast.info(texto, { position: "top-center", autoClose: 3000 });
+
     const handleMenuClick = () => setMenuIsOpen(!menuIsOpen);
 
     if (props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade && props.pedido.costureira && props.pedido.id && user === 'administração') {
         editar = true;
     }
-
     const { isOpen, toggle } = useModal();
-
     return (
         <>
             <div className="flex flex-col gap-5 border border-txsec p-4 rounded-lg bg-bgsec">
@@ -46,7 +46,6 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                 {user != 'administração' && (<span className="text-center text-txpry text-lg md:text-xl mb:2 md:mb-4 uppercase">Detalhes do Pedido</span>)}
                 <div className="flex flex-col md:gap-3 md:flex-row">
                     <div className="md:w-[50%]">
-
                         {user == "administração" ? (
                             <InputTexto label="Nome" type="text" value={props.pedido.nome_cliente} onChange={(e) => props.onChange?.({ ...props.pedido, nome_cliente: (e.target as HTMLInputElement).value.toUpperCase() })} />
                         ) : (<InputDisabled label="Nome" type="text" value={props.pedido.nome_cliente} />)}
@@ -195,14 +194,16 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                     <div className="flex gap-2 md:gap-5">
                         {((user === "administração" || user === "prensa") && props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade) && (
                             <div className="flex justify-end mb-4" onClick={props.salvar}>
-                                <Button texto="Salvar" class="text-verdesec border-verdesec bg-verdepry" />
+                                <div onClick={() => notifVerde("PEDIDO SALVO!")}>
+                                    <Button texto="Salvar" class="text-verdesec border-verdesec bg-verdepry" />
+                                </div>
                             </div>
                         )}
 
                         {user === "exportação" && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, exportacao: true })}>
-                                    <Button texto="Confirmar Exportação" class="text-azulsec border-azulsec bg-azulpry" />
+                                    <Button texto="Concluir Exportação" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -210,7 +211,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {(user === "impressão" && props.pedido.exportacao) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, impressao: true })}>
-                                    <Button texto="Confirmar Impressão" class="text-azulsec border-azulsec bg-azulpry" />
+                                    <Button texto="Concluir Impressão" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -218,7 +219,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {(user === "corte" && props.pedido.impressao) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, corte: true })}>
-                                    <Button texto="Confirmar Corte" class="text-azulsec border-azulsec bg-azulpry" />
+                                    <Button texto="Concluir Corte" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -226,7 +227,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {(user === "prensa" && props.pedido.corte) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, prensa: true })}>
-                                    <Button texto="Confirmar Prensa" class="text-azulsec border-azulsec bg-azulpry" />
+                                    <Button texto="Concluir Prensa" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -234,7 +235,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {(user === "costura" && props.pedido.prensa) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, costura: true })}>
-                                    <Button texto="Confirmar Costura" class="text-azulsec border-azulsec bg-azulpry" />
+                                    <Button texto="Concluir Costura" class="text-azulsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -242,7 +243,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                         {(user === "expedicao" && props.pedido.costura) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, expedicao: true })}>
-                                    <Button texto="Confirmar Expedição" class="text-azulsecsec border-azulsec bg-azulpry" />
+                                    <Button texto="Concluir Expedição" class="text-azulsecsec border-azulsec bg-azulpry" />
                                 </div>
                             </div>
                         )}
@@ -262,13 +263,14 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                     </div>
                 </div>
             </div >
-            {user === "administração" && (<Modal text="Deseja fazer entregar do pedido?" action={props.excluir} isOpen={isOpen} toggle={toggle}></Modal>)}
-            {user === "exportação" && (<Modal text="Deseja confirmar a exportação?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
-            {user === "impressão" && (<Modal text="Deseja confirmar a impressão?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
-            {user === "corte" && (<Modal text="Deseja confirmar o corte?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
-            {user === "prensa" && (<Modal text="Deseja confirmar a prensa?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
-            {user === "costura" && (<Modal text="Deseja confirmar costura?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
-            {user === "expedição" && (<Modal text="Deseja confirmar a expedição?" action={props.salvar} isOpen={isOpen} toggle={toggle}></Modal>)}
+            {user === "administração" && (<Modal text="Deseja entregar o pedido?" action={props.excluir} isOpen={isOpen} toggle={toggle} toast={() => notifAzul("PEDIDO ENTREGUE!")}></Modal>)
+            }
+            {user === "exportação" && (<Modal text="Deseja concluir a exportação?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("EXPORTAÇÃO CONCLUÍDA!")}></Modal>)}
+            {user === "impressão" && (<Modal text="Deseja concluir a impressão?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("IMPRESSÃO CONCLUÍDA!")}></Modal>)}
+            {user === "corte" && (<Modal text="Deseja concluir o corte?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("CORTE CONCLUÍDO!")}></Modal>)}
+            {user === "prensa" && (<Modal text="Deseja concluir a prensa?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("PRENSA CONCLUÍDA!")}></Modal>)}
+            {user === "costura" && (<Modal text="Deseja concluir costura?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("COSTURA CONCLUÍDA!")}></Modal>)}
+            {user === "expedição" && (<Modal text="Deseja concluir a expedição?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("EXPEDIÇÃO CONCLUÍDA!")}></Modal>)}
         </>
     )
 }

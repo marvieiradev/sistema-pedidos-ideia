@@ -3,13 +3,15 @@ import Pagina from "./components/template/Pagina";
 import InputTexto from "./components/shared/InputTexto";
 import Link from "next/link";
 import Button from "./components/template/Button";
-import React from "react";
+import React, { useEffect } from "react";
 import funcionarios from "./data/constants/funcionarios";
 import { Funcionario } from "@/core/model/Funcionario";
+
 
 let error = false;
 export default function Home() {
   let nome = ""; let senha = "";
+
   return (
     <>
       <Pagina>
