@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Pagina>
-        <div className="w-screen h-screen flex justify-center items-center p-2">
+        <div className="w-screen h-screen flex justify-center items-center p-6">
           <div className="bg-bgsec border border-txter items-center flex flex-col p-8 rounded-lg w-full md:max-w-[400px]">
             <img src="./logo-preto.svg" alt="" width={150} />
             <span className="text-center text-txpry text-xl mt-4">Login</span>
