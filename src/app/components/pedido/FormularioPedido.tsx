@@ -240,7 +240,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                             </div>
                         )}
 
-                        {(user === "expedicao" && props.pedido.costura && !props.pedido.expedicao) && (
+                        {(user === "expedição" && props.pedido.costura && !props.pedido.expedicao) && (
                             <div onClick={toggle}>
                                 <div className="flex justify-end mb-4" onClick={() => props.salvarItem?.({ ...props.pedido, expedicao: true })}>
                                     <Button texto="Concluir Expedição" class="text-azulsecsec border-azulsec bg-azulpry" />
