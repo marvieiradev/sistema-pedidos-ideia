@@ -77,7 +77,7 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
                                 <span className="font-semibold text-center text-sm">PRIORIDADE:</span>
 
                                 <div className="relative w-[100px] bg-bgpry border border-cinzasec" onClick={handleMenuClick}>
-                                    <span className="cursor-pointer font-semibold text-center text-sm pr-1">{props.pedido.prioridade == "1" ? "ALTA" : props.pedido.prioridade == "2" ? "MÉDIA" : props.pedido.prioridade == "3" ? "BAIXA" : "..."}</span>
+                                    <span className="cursor-pointer font-semibold text-center text-sm pr-1">{props.pedido.prioridade == "1" ? "ALTA" : props.pedido.prioridade == "2" ? "MÉDIA" : props.pedido.prioridade == "3" ? "BAIXA" : "BAIXA"}</span>
 
                                     {menuIsOpen && (
                                         <div className="z-50 absolute w-[100px] bg-bgpry left-[-1px]" onMouseLeave={() => setMenuIsOpen(false)}>
