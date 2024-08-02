@@ -10,12 +10,14 @@ export default function Header(props: HeaderProps) {
         <div className=" flex w-screen bg-bgter justify-center items-center">
             <div className="flex w-full md:max-w-[1200px] justify-between items-center h-[35px] md:h-[40px] px-2">
                 <div className="flex gap-2 items-center">
-                    <img src="./icon-ideia.svg" alt="" className="w-[24px] md:w-[32px]" />
+                    <Link href="/pedidos" onClick={() => window.location.reload()}>
+                        <img src="./icon-ideia.svg" alt="" className="w-[24px] md:w-[32px] cursor-pointer" />
+                    </Link>
                     <span className="text-xs md:text-base uppercase font-semibold">CONTROLE DE PEDIDOS</span>
                 </div>
                 <div className="flex gap-2 items-center">
                     <span className="text-xs md:text-base uppercase font-semibold">{props.texto}</span>
-                    <div className="border border-txter rounded-md">
+                    <div className="border border-txter rounded-md cursor-pointer">
                         <Link href="/" onClick={() => sessionStorage.setItem("setor", "")}>
                             <IconLogout />
                         </Link>
