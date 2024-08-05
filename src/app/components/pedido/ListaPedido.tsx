@@ -16,7 +16,7 @@ export default function ListaPedido(props: ListaPedidoProps) {
     }, []);
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-6">
             {props.pedidos.map((pedido: Pedido) => {
                 return <LinhaPedido key={pedido.id} pedido={pedido} onClick={props.onClick} />
             })}
