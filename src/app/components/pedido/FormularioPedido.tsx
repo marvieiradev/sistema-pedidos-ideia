@@ -23,6 +23,7 @@ export interface FormularioPedidoProps {
 
 export default function FormularioPedido(props: FormularioPedidoProps) {
     let editar = false;
+    let novo = true;
     const [menuIsOpen, setMenuIsOpen] = React.useState(false);
     const [user, setUser] = useState("");
     useEffect(() => {
@@ -35,8 +36,9 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
 
     const handleMenuClick = () => setMenuIsOpen(!menuIsOpen);
 
-    if (props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade && props.pedido.costureira && props.pedido.id && user === 'administração') {
+    if (props.pedido.nome_cliente && props.pedido.cod_pedido && props.pedido.quantidade && props.pedido.id! && user === 'administração') {
         editar = true;
+        //novo = false
     }
     const { isOpen, toggle } = useModal();
     return (
