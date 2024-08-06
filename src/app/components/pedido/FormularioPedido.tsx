@@ -265,8 +265,8 @@ export default function FormularioPedido(props: FormularioPedidoProps) {
             </div >
             {user === "administração" && (<Modal text="Deseja entregar o pedido?" action={props.excluir} isOpen={isOpen} toggle={toggle} toast={() => notifAzul("PEDIDO ENTREGUE!")}></Modal>)
             }
-            {user === "exportação" && (<Modal text="Deseja concluir a exportação?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("EXPORTAÇÃO CONCLUÍDA!")}></Modal>)}
-            {user === "impressão" && (<Modal text="Deseja concluir a impressão?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("IMPRESSÃO CONCLUÍDA!")}></Modal>)}
+            {user === "loja" && (<Modal text="Deseja concluir a exportação?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("EXPORTAÇÃO CONCLUÍDA!")}></Modal>)}
+            {user === "loja" && (<Modal text="Deseja concluir a impressão?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("IMPRESSÃO CONCLUÍDA!")}></Modal>)}
             {user === "corte" && (<Modal text="Deseja concluir o corte?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("CORTE CONCLUÍDO!")}></Modal>)}
             {user === "prensa" && (<Modal text="Deseja concluir a prensa?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("PRENSA CONCLUÍDA!")}></Modal>)}
             {user === "costura" && (<Modal text="Deseja concluir costura?" action={props.salvar} isOpen={isOpen} toggle={toggle} toast={() => notifVerde("COSTURA CONCLUÍDA!")}></Modal>)}
