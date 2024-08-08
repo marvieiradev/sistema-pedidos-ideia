@@ -11,7 +11,7 @@ export default function ListaPedido(props: ListaPedidoProps) {
     useEffect(() => {
         const timer = setTimeout(() => {
             window.location.reload();
-        }, 60000);
+        }, 180000);
         return () => clearTimeout(timer);
     }, []);
 
