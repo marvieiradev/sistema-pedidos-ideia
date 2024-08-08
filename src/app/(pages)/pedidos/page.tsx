@@ -23,9 +23,11 @@ export default function Page() {
 
     return (
         <Pagina>
-            <Header texto={user} />
-            <div className="w-full md:max-w-[1200px] px-2">
+            <div className="bg-bgpry sticky top-0 z-50">
+                <Header texto={user} />
                 <Titulo texto="Acompanhamento Diário" />
+            </div>
+            <div className="w-full md:max-w-[1200px] px-2">
                 {pedido ? (
                     <FormularioPedido
                         pedido={pedido}
