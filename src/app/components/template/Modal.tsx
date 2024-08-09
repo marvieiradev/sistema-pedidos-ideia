@@ -14,7 +14,7 @@ export default function Modal(props: ModalType) {
     return (
         <>
             {props.isOpen && (
-                <div className="z-30 modal-overlay bg-black fixed inset-0 bg-dark bg-opacity-10 backdrop-blur-sm flex justify-center items-center" onClick={props.toggle}>
+                <div className="z-50 modal-overlay bg-black fixed inset-0 bg-dark bg-opacity-10 backdrop-blur-sm flex justify-center items-center" onClick={props.toggle}>
                     <div onClick={(e) => e.stopPropagation()} className="modal-box">
                         <div className="h-[200px] w-[300px] lg:h-[250px] lg:w-[400px] bg-bgsec border-txter border-solid border shadow-lg rounded-lg">
                             <div className="flex flex-col items-center px-5">

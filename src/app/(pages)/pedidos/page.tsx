@@ -45,7 +45,6 @@ export default function Page() {
                             )}
                         </div>
                         <Tabela />
-                        { }
                         <ListaPedido pedidos={pedidos} onClick={alterarPedido} />
                     </>
                 )}
